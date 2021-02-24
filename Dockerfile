@@ -11,3 +11,4 @@ RUN make build-binary
 FROM scratch
 COPY --from=build-binary /build/go-embed-nextjs /
 CMD ["/go-embed-nextjs"]
+EXPOSE 8080
