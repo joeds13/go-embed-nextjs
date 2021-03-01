@@ -6,9 +6,11 @@ metadata:
   tags:
     - javascript
     - go
+  annotations:
+    backstage.io/techdocs-ref: url:https://github.com/joeds13/go-embed-nextjs
+    github.com/project-slug: joeds13/go-embed-nextjs
 spec:
   type: service
   owner: joe@stringer.sh
   lifecycle: experimental
-  system: test 
-
+  system: test
