@@ -1,7 +1,6 @@
 package main
 
 import (
-	"embed"
 	"encoding/json"
 	"flag"
 	"io/fs"
@@ -12,16 +11,7 @@ import (
 	"time"
 )
 
-// Embed Next.js exported site
-//go:embed client/out/*
-//go:embed client/out/*/*
-//go:embed client/out/*/*/*
-//go:embed client/out/*/*/*/*
-//go:embed client/out/*/*/*/*/*
-//go:embed client/out/*/*/*/*/*/*
-//go:embed client/out/*/*/*/*/*/*/*
-var content embed.FS
-
+//go:generate go run embed_gen.go
 func main() {
 	devMode := flag.Bool("dev", false, "Dev mode proxies to dev mode client on http://localhost:3000/")
 	flag.Parse()
@@ -46,6 +36,7 @@ func main() {
 		})
 	} else {
 		// Return the built client as the filesystem root
+		// content is provided by go gernerating embed_gen.go
 		client, err := fs.Sub(content, "client/out")
 		if err != nil {
 			panic(err)

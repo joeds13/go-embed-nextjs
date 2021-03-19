@@ -1,2 +1,5 @@
 # go
 go-embed-nextjs
+
+# go generate
+embed.go
