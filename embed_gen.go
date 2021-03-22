@@ -26,6 +26,7 @@ import (
 var content embed.FS
 `))
 
+// TODO: this file list will get long in a big prject, look at using dirs
 func main() {
 	log.Println("Creating: embed.go")
 	f, err := os.Create("embed.go")
