@@ -7,6 +7,10 @@ build-binary:
 	go generate
 	CGO_ENABLED=0 go build -ldflags "-w" -a -o go-embed-nextjs .
 
+install-client:
+	cd client; \
+	npm install
+
 start-client:
 	cd client; \
 	npm run dev &
@@ -18,7 +22,7 @@ export-client:
 	npm run export
 
 docker-build:
-	docker build -t go-embed-nextjs:latest .
+	docker buildx build -t go-embed-nextjs:latest .
 
 docker-run: docker-build
 	docker run --rm -it -p 8080:8080 go-embed-nextjs:latest

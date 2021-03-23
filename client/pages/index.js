@@ -25,7 +25,6 @@ import React, {useEffect, useState} from "react";
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-        <p>DEV MODE</p>
         <p>
           {JSON.stringify(response)}
         </p>

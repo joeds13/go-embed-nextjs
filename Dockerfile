@@ -1,11 +1,15 @@
-FROM node:15 AS build-ui
+FROM node:15 AS build-client
+ENV NEXT_TELEMETRY_DISABLED 1
 WORKDIR /build
+COPY Makefile /build/
+COPY client/package.json /build/client/
+RUN make install-client
 COPY . /build
-RUN make export-ui
+RUN make export-client
 
 FROM golang:1.16 AS build-binary
 WORKDIR /build
-COPY --from=build-ui /build /build
+COPY --from=build-client /build /build
 RUN make build-binary
 
 FROM scratch
