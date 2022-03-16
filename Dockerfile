@@ -1,4 +1,4 @@
-FROM node:15 AS build-client
+FROM node:17 AS build-client
 ENV NEXT_TELEMETRY_DISABLED 1
 WORKDIR /build
 COPY Makefile /build/
@@ -7,7 +7,7 @@ RUN make install-client
 COPY . /build
 RUN make export-client
 
-FROM golang:1.16 AS build-binary
+FROM golang:1.18 AS build-binary
 WORKDIR /build
 COPY --from=build-client /build /build
 RUN make build-binary

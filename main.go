@@ -36,7 +36,7 @@ func main() {
 		})
 	} else {
 		// Return the built client as the filesystem root
-		// content is provided by go gernerating embed_gen.go
+		// content is provided by go generating embed_gen.go
 		client, err := fs.Sub(content, "client/out")
 		if err != nil {
 			panic(err)
